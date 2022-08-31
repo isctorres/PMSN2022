@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:social_login_buttons/social_login_buttons.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -73,6 +74,36 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
                 child: Image.asset('assets/bloque.png',
                     height: MediaQuery.of(context).size.width / 5),
+              ),
+            ),
+            Positioned(
+              bottom: MediaQuery.of(context).size.width / 50,
+              child: Container(
+                padding: EdgeInsets.symmetric(
+                    horizontal: MediaQuery.of(context).size.width / 20),
+                width: MediaQuery.of(context).size.width / 1.2,
+                child: Column(
+                  children: [
+                    SocialLoginButton(
+                      buttonType: SocialLoginButtonType.facebook,
+                      onPressed: () {},
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    SocialLoginButton(
+                      buttonType: SocialLoginButtonType.github,
+                      onPressed: () {},
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    SocialLoginButton(
+                      buttonType: SocialLoginButtonType.google,
+                      onPressed: () {},
+                    ),
+                  ],
+                ),
               ),
             )
           ],
