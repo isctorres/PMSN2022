@@ -41,7 +41,9 @@ class DashboardScreen extends StatelessWidget {
               leading: Image.asset('assets/hongo.png'),
               trailing: Icon(Icons.chevron_right),
               title: Text('Base de datos'),
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, '/task');
+              },
             ),
             ListTile(
               leading: Image.asset('assets/hongo.png'),
