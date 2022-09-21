@@ -27,7 +27,9 @@ class _ListTaskScreenState extends State<ListTaskScreen> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.pushNamed(context, '/add');
+              Navigator.pushNamed(context, '/add').then((value) {
+                setState(() {});
+              });
             },
             icon: Icon(Icons.add_circle_outline),
           )
@@ -53,7 +55,15 @@ class _ListTaskScreenState extends State<ListTaskScreen> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/add', arguments: {
+                                'idTarea': snapshot.data![index].idTarea,
+                                'dscTarea': snapshot.data![index].dscTarea,
+                                'fecEntrega': snapshot.data![index].fechaEnt
+                              }).then((value) {
+                                setState(() {});
+                              });
+                            },
                             icon: Icon(Icons.edit),
                           ),
                           IconButton(
