@@ -38,6 +38,7 @@ dependencies:
   social_login_buttons: ^1.0.6+2
   sqflite: ^2.0.2
   path_provider: ^2.0.11
+  provider: ^6.0.3
 
 dev_dependencies:
   flutter_test:

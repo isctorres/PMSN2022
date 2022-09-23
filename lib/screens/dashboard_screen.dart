@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practica1/screens/theme_screen.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({Key? key}) : super(key: key);
@@ -6,7 +7,9 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).backgroundColor,
+      ),
       drawer: Drawer(
         backgroundColor: Color.fromARGB(255, 226, 133, 26),
         child: ListView(
@@ -56,6 +59,7 @@ class DashboardScreen extends StatelessWidget {
           ],
         ),
       ),
+      body: ThemeScreen(),
     );
   }
 }
