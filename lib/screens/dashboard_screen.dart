@@ -51,6 +51,22 @@ class DashboardScreen extends StatelessWidget {
             ListTile(
               leading: Image.asset('assets/hongo.png'),
               trailing: Icon(Icons.chevron_right),
+              title: Text('Popular Movies'),
+              onTap: () {
+                Navigator.pushNamed(context, '/list');
+              },
+            ),
+            ListTile(
+              leading: Image.asset('assets/hongo.png'),
+              trailing: Icon(Icons.chevron_right),
+              title: Text('About us'),
+              onTap: () {
+                Navigator.pushNamed(context, '/about');
+              },
+            ),
+            ListTile(
+              leading: Image.asset('assets/hongo.png'),
+              trailing: Icon(Icons.chevron_right),
               title: Text('Cerrar Sesión'),
               onTap: () {
                 Navigator.popUntil(context, ModalRoute.withName('/login'));
