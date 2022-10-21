@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:practica1/provider/theme_provider.dart';
 import 'package:practica1/screens/about_us_screen.dart';
@@ -6,11 +7,14 @@ import 'package:practica1/screens/list_popular_screen.dart';
 import 'package:practica1/screens/list_task_screen.dart';
 import 'package:practica1/screens/login_screen.dart';
 import 'package:practica1/screens/popular_detail_screen.dart';
+import 'package:practica1/screens/sign_up_screen.dart';
 import 'package:practica1/screens/splash_screen.dart';
 import 'package:practica1/screens/task_screen.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -43,7 +47,8 @@ class PMSNApp extends StatelessWidget {
         '/add': (BuildContext context) => TaskScreen(),
         '/list': (BuildContext context) => ListPopularScreen(),
         '/detail': (BuildContext context) => PopularDetailScreen(),
-        '/about': (BuildContext context) => AboutUsScreen()
+        '/about': (BuildContext context) => AboutUsScreen(),
+        '/signup': (BuildContext context) => SignUpScreen()
       },
     );
   }

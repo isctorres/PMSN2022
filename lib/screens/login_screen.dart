@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:practica1/firebase/email_authentication.dart';
 import 'package:social_login_buttons/social_login_buttons.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -11,6 +13,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController txtConUser = TextEditingController();
   TextEditingController txtConPwd = TextEditingController();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final EmailAuthentication _emailAuth = EmailAuthentication();
 
   @override
   Widget build(BuildContext context) {
@@ -75,12 +79,17 @@ class _LoginScreenState extends State<LoginScreen> {
               bottom: MediaQuery.of(context).size.width / 2,
               right: MediaQuery.of(context).size.width / 20,
               child: GestureDetector(
-                onTap: () {
-                  //print('Valor de la caja ${txtConUser.text}');
-                  Navigator.pushNamed(
-                    context,
-                    '/dash',
-                  );
+                onTap: () async {
+                  var ban = await _emailAuth.signInWithEmailAndPassword(
+                      email: txtConUser.text, password: txtConPwd.text);
+                  if (ban == true) {
+                    if (_auth.currentUser!.emailVerified)
+                      Navigator.pushNamed(context, '/dash');
+                    else
+                      print('Usuario no validado');
+                  } else {
+                    print('Credenciales invalidas');
+                  }
                 },
                 child: Image.asset('assets/bloque.png',
                     height: MediaQuery.of(context).size.width / 5),
@@ -113,6 +122,16 @@ class _LoginScreenState extends State<LoginScreen> {
                       onPressed: () {},
                     ),
                   ],
+                ),
+              ),
+            ),
+            Positioned(
+              top: MediaQuery.of(context).size.width / 1.8,
+              child: TextButton(
+                onPressed: () => Navigator.pushNamed(context, '/signup'),
+                child: Text(
+                  'Sign Up',
+                  style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
               ),
             )
